@@ -3,7 +3,8 @@ class TasksController < ApplicationController
   end
 
   def show
-    task = Task.all
+      task= Task.all
+      render json:task
   end
 
   def update
