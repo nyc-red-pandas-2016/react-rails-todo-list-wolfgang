@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import Axios from "axios";
-import task from './components/Task';
+import Tasks from './components/Tasks';
 import './App.css';
 
 class App extends Component {
@@ -32,18 +32,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <ul>
-         {this.state.tasks.map((task,index)=>{
-          return(
-            <li key={index}>
-                {task.name}
-            </li>
-            )
-         })}
-         </ul>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Tasks data={this.state.tasks}/>
       </div>
     );
   }
