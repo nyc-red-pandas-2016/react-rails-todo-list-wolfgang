@@ -12,8 +12,10 @@ class App extends Component {
         tasks: []
       }
       this.updateTasks = this.updateTasks.bind(this)
+      this.deleteTask = this.deleteTask.bind(this)
+      this.createTask = this.createTask.bind(this)
     }
-
+    // delete a task
     deleteTask(task_id){
       let url=`http://localhost:3000/tasks/${task_id}`
       Axios.delete(url).then((response)=>{
@@ -25,10 +27,28 @@ class App extends Component {
       })
     }
 
-    updateTasks(task_id){
-      if(task_id){
-        this.deleteTask(task_id);
-      }else{
+    createTask(newTask){
+        Axios({
+          method:'post',
+          url:'http://localhost:3000/tasks',
+          data:newTask
+        }).then((response)=>{
+            if(Object.keys(response.data).join() !== "errors"){
+              document.getElementById("newTaskForm").reset()
+              this.setState({
+                tasks:response.data
+              })
+            }else{
+                alert(response.data.errors)
+            }
+          // end of task
+        }).catch((errors)=>{
+          console.log(errors)
+          // end of catch
+        })
+    }
+    // get all of the tasks
+    updateTasks(){
         Axios.get("http://localhost:3000/tasks/show")
         .then((response)=>{
             this.setState({
@@ -40,8 +60,7 @@ class App extends Component {
           console.log(errors  )
           // end of catch
         })
-      // end of else
-      }
+
       // end of updateTasks
     }
 
@@ -56,8 +75,8 @@ class App extends Component {
         <div className="App-header">
           <h2>To-Do List</h2>
         </div>
-        <Tasks data={this.state.tasks} updateTasks={this.updateTasks.bind(this)} />
-        <NewTask />
+        <Tasks data={this.state.tasks} updateTasks={this.deleteTask.bind(this)} />
+        <NewTask newTask={this.createTask.bind(this)} />
 
       </div>
     );

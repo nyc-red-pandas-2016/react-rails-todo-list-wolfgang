@@ -1,3 +1,6 @@
+*{
+  box-sizing: border-box;
+}
 body {
   color:#fff;
   background-color: #212121;
@@ -86,4 +89,28 @@ body {
 .example-appear.example-appear-active {
   opacity: 1;
   transition: opacity .5s ease-in;
+}
+
+.new-task-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+.text-field{
+    padding:5px;
+}
+#newTaskForm input ,#newTaskForm textarea,button{
+    width:100%;
+    padding:10px;
+    outline:0px;
+    border: 1px solid #886108;
+    background:transparent;
+    color: #e7b542;
+    border-radius:4px;
+}
+button{
+  cursor:pointer;
+  transition:all 300ms ease-in-out;
+}
+button:hover{
+  background-color:rgb(58, 58, 58);
 }
