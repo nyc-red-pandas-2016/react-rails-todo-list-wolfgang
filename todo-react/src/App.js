@@ -12,6 +12,7 @@ class App extends Component {
       }
     }
     updateTasks(){
+      debugger
       this.forceUpdate()
     }
     componentDidMount(){

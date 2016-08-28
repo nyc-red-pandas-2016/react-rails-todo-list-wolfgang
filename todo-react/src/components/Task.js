@@ -5,7 +5,7 @@ export default class Task extends Component{
   taskDelete(e){
     e.preventDefault()
     let task = this.refs.taskDelete.id
-    let url=`http://localhost:3000/tasks/delete/${task}`
+    let url=`http://localhost:3000/tasks/${task}`
     Axios.delete(url).then(
         this.props.onDelete()
     ).catch((errors)=>{

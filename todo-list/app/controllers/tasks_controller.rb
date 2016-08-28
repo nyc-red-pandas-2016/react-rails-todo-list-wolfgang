@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :find_task, only:[:destroy]
+  # before_action :find_task, only:[:destroy,:delete]
   def new
   end
 
@@ -12,14 +12,15 @@ class TasksController < ApplicationController
   end
 
   def delete
-    
+    find_task
   end
 
   def destroy
-    find_task.destroy
+    Task.find(params[:id]).destroy
+    render 'show'
   end
   private
   def find_task
-    task = Task.find(params[:id])
+    # task = Task.find(id:params[:id])
   end
 end

@@ -8,10 +8,19 @@ Bundler.require(*Rails.groups)
 
 module TodoList
   class Application < Rails::Application
-    config.action_dispatch.default_headers = {
-    'Access-Control-Allow-Origin' => 'http://localhost:3001',
-    'Access-Control-Request-Method' => %w{GET POST OPTIONS}.join(",")
-  }
+    config.middleware.insert_before 0, "Rack::Cors" do
+     allow do
+       origins '*'
+       resource '*',
+       :headers => :any,
+       :methods =>  [:get, :post, :delete, :put, :patch, :options, :head]
+     end
+   end
+  #   config.action_dispatch.default_headers = {
+  #   'Access-Control-Allow-Origin' => 'http://localhost:3001',
+  #   'Access-Control-Request-Method' => %w{GET POST PUT DELETE OPTIONS}.join(",")
+  # }
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
