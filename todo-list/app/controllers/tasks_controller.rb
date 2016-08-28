@@ -4,8 +4,7 @@ class TasksController < ApplicationController
   end
 
   def show
-      task= Task.all
-      render json:task
+      render json:all_tasks
   end
 
   def update
@@ -17,10 +16,10 @@ class TasksController < ApplicationController
 
   def destroy
     Task.find(params[:id]).destroy
-    render 'show'
+    render json:all_tasks
   end
   private
-  def find_task
-    # task = Task.find(id:params[:id])
+  def all_tasks
+    Task.all
   end
 end

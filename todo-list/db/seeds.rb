@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Task.all.destroy_all
+6.times do
+  Task.create(name:Faker::Lorem.sentence(1),description:Faker::Lorem.sentence)
+end

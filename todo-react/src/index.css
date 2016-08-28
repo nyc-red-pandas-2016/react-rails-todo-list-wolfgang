@@ -12,6 +12,7 @@ body {
   padding:0px;
 }
 .tasks li{
+  transition:all 500ms ease-in-out;
   padding:20px;
   margin:15px;
   border:1px solid #f5b327;
@@ -23,4 +24,66 @@ body {
 }
 .task-info h3{
   margin:0px;
+}
+
+.col-group {
+    display: table;
+    width: 100%;
+}
+.col-group div[class^="col-"]{
+    display:table-cell;
+}
+.col-2{
+    text-align:right;
+    vertical-align:middle;
+}
+
+.delete{
+    display:inline-block;
+    background-color: #e7b542;
+    color:#fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    font-size: .8em;
+}
+.delete:hover{
+  background-color:#e6a50d;
+}
+
+.task-info p{
+    margin:5px 0px 0px 0px;
+    font-size:.9em;
+    color: #fdd986;
+}
+.task-info sub{
+    font-size:.7em;
+    color: #797979;
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
 }

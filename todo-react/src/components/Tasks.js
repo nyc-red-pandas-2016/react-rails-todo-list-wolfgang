@@ -1,9 +1,10 @@
 import React,{Component} from "react"
 import Task from "./Task"
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 export default class Tasks extends Component{
-  taskDelete(){
-      this.props.updateTasks()
+  taskDelete(task_id){
+      this.props.updateTasks(task_id)
   }
   render(){
     let tasks = this.props.data
@@ -11,9 +12,11 @@ export default class Tasks extends Component{
         <ul className="tasks">
           {tasks.map((task,index)=>{
             return(
-              <li key={index}>
-              <Task onDelete={this.taskDelete.bind(this)} data={task}/>
-              </li>
+              <ReactCSSTransitionGroup key={index} transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+                <li>
+                  <Task onDelete={this.taskDelete.bind(this)} data={task}/>
+                </li>
+              </ReactCSSTransitionGroup>
             )
           })
           }
