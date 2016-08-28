@@ -1,6 +1,5 @@
 
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import Axios from "axios";
 import Tasks from './components/Tasks';
 import './App.css';
@@ -11,6 +10,10 @@ class App extends Component {
       this.state = {
         tasks: []
       }
+    }
+    updateTasks(){
+      debugger
+      this.forceUpdate()
     }
     componentDidMount(){
       Axios.get("http://localhost:3000/tasks/show")
@@ -29,10 +32,9 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>To-Do List</h2>
         </div>
-        <Tasks data={this.state.tasks}/>
+        <Tasks data={this.state.tasks} updateTasks={this.updateTasks.bind(this)} />
       </div>
     );
   }
