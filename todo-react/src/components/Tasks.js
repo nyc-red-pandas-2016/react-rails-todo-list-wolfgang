@@ -2,6 +2,9 @@ import React,{Component} from "react"
 import Task from "./Task"
 
 export default class Tasks extends Component{
+  taskDelete(){
+      this.props.updateTasks()
+  }
   render(){
     let tasks = this.props.data
     return(
@@ -9,7 +12,7 @@ export default class Tasks extends Component{
           {tasks.map((task,index)=>{
             return(
               <li key={index}>
-              <Task data={task}/>
+              <Task onDelete={this.taskDelete.bind(this)} data={task}/>
               </li>
             )
           })
