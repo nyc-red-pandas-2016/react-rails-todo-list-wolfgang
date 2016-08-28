@@ -6,12 +6,6 @@ export default class Task extends Component{
     e.preventDefault()
     let task_id = this.refs.taskDelete.id
     this.props.onDelete(task_id)
-    // let url=`http://localhost:3000/tasks/${task}`
-    // Axios.delete(url).then(
-    //     this.props.onDelete()
-    // ).catch((errors)=>{
-    //   console.log(errors)
-    // })
   }
   render(){
     let {name,description,created_at,updated_at,id} = this.props.data
