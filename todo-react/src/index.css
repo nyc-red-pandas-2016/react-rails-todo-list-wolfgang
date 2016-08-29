@@ -1,6 +1,9 @@
 *{
   box-sizing: border-box;
 }
+h2 {
+    color: #ffd26c;
+}
 body {
   color:#fff;
   background-color: #212121;
@@ -10,18 +13,18 @@ body {
 }
 
 .tasks{
-  list-style: none;
   margin:0px;
+  list-style: none;
   padding:0px;
 }
 .tasks li{
-  transition:all 500ms ease-in-out;
-  padding:20px;
-  margin:15px;
-  border:1px solid #f5b327;
-  border-radius:5px;
+  position:relative;
 }
 .task-info{
+  border:1px solid #f5b327;
+  border-radius:5px;
+  padding:20px;
+  margin:15px;
   text-align: left;
   color:#ffce65;
 }
@@ -69,31 +72,38 @@ body {
     font-size:.7em;
     color: #797979;
 }
+/*when a new item is added*/
+.tasks-enter {
+  opacity: 0.01;
+  margin-top:-10px;
+}
 
-.example-enter {
+.tasks-enter.tasks-enter-active {
+  opacity: 1;
+  margin-top:0;
+  transition: all 300ms ease-in;
+}
+
+.tasks-leave {
+  margin-top:0px;
+  opacity: 1;
+}
+
+.tasks-leave.tasks-leave-active {
+  opacity: 0.01;
+  margin-top:-10px;
+  transition: all 200ms ease-in;
+}
+/*During the initial mount ReactCSSTransitionGroup will get the example-appear CSS class and the example-appear-active CSS class added in the next tick.*/
+.tasks-appear {
+  margin-top:-10px;
   opacity: 0.01;
 }
 
-.example-enter.example-enter-active {
+.tasks-appear.tasks-appear-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
-}
-
-.example-leave {
-  opacity: 1;
-}
-
-.example-leave.example-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
-}
-.example-appear {
-  opacity: 0.01;
-}
-
-.example-appear.example-appear-active {
-  opacity: 1;
-  transition: opacity .5s ease-in;
+  margin-top:0;
+  transition: all .3s ease-in;
 }
 
 .new-task-form {

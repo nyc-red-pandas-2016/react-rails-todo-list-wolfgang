@@ -12,18 +12,18 @@ export default class Tasks extends Component{
   render(){
     let tasks = this.props.data
     return(
-        <ul className="tasks">
+        // <ul className="tasks">
+        <ReactCSSTransitionGroup component="ul" className="tasks" transitionName="tasks" transitionEnterTimeout={300} transitionLeaveTimeout={200}>
           {tasks.map((task,index)=>{
             return(
-              <ReactCSSTransitionGroup key={index} transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-                <li>
+                <li  key={index}>
                   <Task onDelete={this.taskDelete.bind(this)} onComplete={this.taskComplete.bind(this)} data={task}/>
                 </li>
-              </ReactCSSTransitionGroup>
             )
           })
           }
-        </ul>
+          </ReactCSSTransitionGroup>
+        // </ul>
       // end of return
     )
     // end of render
