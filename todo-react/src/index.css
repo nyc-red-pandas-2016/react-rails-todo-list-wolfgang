@@ -56,10 +56,10 @@ body {
   background-color:#20b367;
   transition:all 300ms ease-in-out;
 }
-.delete:hover.complete:hover{
-  background-color:#e6a50d;
-}
 
+.delete:hover {
+    background-color: #f55858;
+}
 .task-info p{
     margin:5px 0px 0px 0px;
     font-size:.9em;
