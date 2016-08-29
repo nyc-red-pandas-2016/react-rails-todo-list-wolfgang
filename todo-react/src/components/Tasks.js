@@ -6,6 +6,9 @@ export default class Tasks extends Component{
   taskDelete(task_id){
       this.props.updateTasks(task_id)
   }
+  taskComplete(task_id){
+    this.props.taskComplete(task_id)
+  }
   render(){
     let tasks = this.props.data
     return(
@@ -14,7 +17,7 @@ export default class Tasks extends Component{
             return(
               <ReactCSSTransitionGroup key={index} transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
                 <li>
-                  <Task onDelete={this.taskDelete.bind(this)} data={task}/>
+                  <Task onDelete={this.taskDelete.bind(this)} onComplete={this.taskComplete.bind(this)} data={task}/>
                 </li>
               </ReactCSSTransitionGroup>
             )

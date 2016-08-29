@@ -14,6 +14,7 @@ class App extends Component {
       this.updateTasks = this.updateTasks.bind(this)
       this.deleteTask = this.deleteTask.bind(this)
       this.createTask = this.createTask.bind(this)
+      this.completeTask = this.completeTask.bind(this)
     }
     // delete a task
     deleteTask(task_id){
@@ -26,7 +27,21 @@ class App extends Component {
         console.log(errors)
       })
     }
-
+    // complete a task
+    completeTask(task_id){
+      Axios({
+        method:"put",
+        url:`http://localhost:3000/tasks/${task_id}`
+      }).then((response)=>{
+        this.setState({
+          tasks:response.data
+        })
+      }).catch((errors)=>{
+        console.log(errors)
+        // end of errors
+      })
+    }
+// create a new task
     createTask(newTask){
         Axios({
           method:'post',
@@ -75,7 +90,7 @@ class App extends Component {
         <div className="App-header">
           <h2>To-Do List</h2>
         </div>
-        <Tasks data={this.state.tasks} updateTasks={this.deleteTask.bind(this)} />
+        <Tasks data={this.state.tasks} updateTasks={this.deleteTask.bind(this)} taskComplete={this.completeTask.bind(this)}/>
         <NewTask newTask={this.createTask.bind(this)} />
 
       </div>
