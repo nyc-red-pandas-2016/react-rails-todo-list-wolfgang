@@ -27,7 +27,7 @@ export default class Task extends Component{
             </div>
             <div className="col-2">
               <a id={id} ref="taskDelete" className="delete" href={`/tasks/delete/${id}`} onClick={this.taskDelete.bind(this)}>Delete</a>
-              <a id={id} ref="taskcomplete" className={complete === true ? "complete completed" : "complete"} href={`/tasks/${id}`} onClick={this.taskComplete.bind(this)}>Complete</a>
+              <a id={id} ref="taskcomplete" className={complete === true ? "complete completed" : "complete"} href={`/tasks/${id}`} onClick={this.taskComplete.bind(this)}>{complete === true ? "Completed" : "Not complete"}</a>
             </div>
             </div>
 
