@@ -41,7 +41,8 @@ body {
     vertical-align:middle;
 }
 
-.delete{
+.delete,.complete{
+  margin:3px;
     display:inline-block;
     background-color: #e7b542;
     color:#fff;
@@ -50,8 +51,12 @@ body {
     text-transform: uppercase;
     border-radius: 5px;
     font-size: .8em;
+  }
+.completed{
+  background-color:#42e784;
+  transition:all 300ms ease-in-out;
 }
-.delete:hover{
+.delete:hover.complete:hover{
   background-color:#e6a50d;
 }
 

@@ -21,6 +21,13 @@ class TasksController < ApplicationController
   end
 
   def update
+    task = Task.find(params[:id])
+   if task.complete == false
+     task.update_attributes(:complete=>true)
+   else
+     task.update_attributes(:complete=>false)
+   end
+    render json:all_tasks
   end
 
   def delete
